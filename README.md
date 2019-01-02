@@ -17,6 +17,7 @@ and the number of days for which snapshots should be retained. By default, the
 script will install the function into your default configured region and retain
 snapshots for 30 days.
 
+## Examples
 ```console
 ## Install in US East (Ohio) and retain snapshots for 15 days
 REGION=us-east-2 DAYS=15 bin/deploy
@@ -29,6 +30,11 @@ REGION=eu-west-1 bin/deploy
 
 ## Install in Asia Pacific (Tokyo) and create snapshot every day at 7:00pm UTC, retain snapshots for 30 days
 REGION=ap-northeast-1 SCHEDULE="cron(0 19 * * ? *)" bin/deploy
+```
+## OS configuration:
+```console
+## Install in the CLI's configured default region, creating a snapshot of the names instances every day at 9:05am UTC, retain snapshots for 30 days
+INSTANCE_NAMES="OfficeSpaceBlog" SCHEDULE="cron(5 9 * * ? *)" DAYS=30 bin/deploy
 ```
 
 ## License

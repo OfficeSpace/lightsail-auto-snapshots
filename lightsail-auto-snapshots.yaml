@@ -15,6 +15,9 @@ Parameters:
     Type: String
     Description: Event schedule of create snapshot.
     Default: rate(1 day)
+  InstanceNames:
+    Type: String
+    Description: (Optional) Comma-separated list of instance names to take a snapshot.
 
 Metadata:
   AWS::CloudFormation::Interface:
@@ -23,6 +26,8 @@ Metadata:
         default: Retention Days
       Schedule:
         default: Event Schedule
+      InstanceNames:
+        default: Instance Names
 
 Resources:
   AutoSnapshot:
@@ -38,6 +43,7 @@ Resources:
       Environment:
         Variables:
           RETENTION_DAYS: !Ref RetentionDays
+          INSTANCE_NAMES: !Ref InstanceNames
       Events:
         Schedule:
           Type: Schedule
